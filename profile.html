@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Edit Profile</title>
+</head>
+<body class="bg-gray-100">
+
+    <div class="max-w-4xl mx-auto p-6">
+        <!-- Profile Header -->
+        <div class="bg-white shadow-md rounded-lg overflow-hidden mb-6 relative">
+            <!-- Edit button -->
+            <button class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600" id="editButton">Edit Profile</button>
+            <div class="p-6 flex items-center">
+                <!-- Profile Picture -->
+                <div class="relative">
+                    <img id="profilePicture" class="h-24 w-24 rounded-full object-cover mr-6" src="https://via.placeholder.com/150" alt="Profile Picture">
+                    <input type="file" id="fileInput" class="hidden" accept="image/*">
+                    <button class="absolute bottom-0 right-0 bg-gray-800 text-white p-1 rounded-full" id="changePhotoButton">📸</button>
+                </div>
+                <div>
+                    <!-- Editable Name and Username -->
+                    <h1 class="text-3xl font-bold text-gray-800 editable" contenteditable="false" id="nameField">John Doe</h1>
+                    <p class="text-gray-600 editable" contenteditable="false" id="usernameField">@johndoe</p>
+                    <p class="mt-2 text-gray-600 editable" contenteditable="false" id="bioField">Passionate software developer with a love for creating innovative web applications.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Skills</h2>
+            <div class="editable flex flex-wrap space-x-2 space-y-2" contenteditable="false" id="skillsField">
+                <span class="px-4 py-2 bg-gray-200 rounded-lg skill-item">JavaScript</span>
+                <span class="px-4 py-2 bg-gray-200 rounded-lg skill-item">React</span>
+                <span class="px-4 py-2 bg-gray-200 rounded-lg skill-item">Node.js</span>
+                <span class="px-4 py-2 bg-gray-200 rounded-lg skill-item">TailwindCSS</span>
+            </div>
+            <!-- Add Skill Button -->
+            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600" id="addSkillButton">Add Skill</button>
+        </div>
+
+        <!-- Recent Activity Section -->
+        <div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Recent Activities</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Activity Card 1 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img class="w-full h-40 object-cover" src="https://via.placeholder.com/300x200" alt="Post Image">
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-gray-800">Built a New Portfolio</h3>
+                        <p class="text-sm text-gray-600 mt-2">Just launched my personal portfolio website. Feel free to check it out!</p>
+                        <a href="#" class="text-blue-500 font-semibold mt-4 block">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Activity Card 2 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img class="w-full h-40 object-cover" src="https://via.placeholder.com/300x200" alt="Post Image">
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-gray-800">Collaborated on Open Source</h3>
+                        <p class="text-sm text-gray-600 mt-2">Had a great time contributing to an exciting open-source project on GitHub.</p>
+                        <a href="#" class="text-blue-500 font-semibold mt-4 block">Read more</a>
+                    </div>
+                </div>
+
+                <!-- Activity Card 3 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img class="w-full h-40 object-cover" src="https://via.placeholder.com/300x200" alt="Post Image">
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-gray-800">Attended a Tech Conference</h3>
+                        <p class="text-sm text-gray-600 mt-2">Recently attended a virtual tech conference and learned a lot about emerging trends in AI and cloud computing.</p>
+                        <a href="#" class="text-blue-500 font-semibold mt-4 block">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden" id="editModal">
+        <div class="bg-white rounded-lg shadow-lg max-w-md mx-auto mt-24 p-6 relative">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Edit Profile</h2>
+            <!-- Form to edit profile -->
+            <form id="profileForm">
+                <label for="nameInput" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" id="nameInput" class="mt-1 mb-4 p-2 border border-gray-300 rounded-lg w-full" value="John Doe">
+
+                <label for="usernameInput" class="block text-sm font-medium text-gray-700">Username</label>
+                <input type="text" id="usernameInput" class="mt-1 mb-4 p-2 border border-gray-300 rounded-lg w-full" value="@johndoe">
+
+                <label for="bioInput" class="block text-sm font-medium text-gray-700">Bio</label>
+                <textarea id="bioInput" class="mt-1 p-2 border border-gray-300 rounded-lg w-full">Passionate software developer with a love for creating innovative web applications.</textarea>
+
+                <div class="flex justify-end space-x-2 mt-6">
+                    <button type="button" class="px-4 py-2 bg-gray-500 text-white rounded-lg" id="cancelButton">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const editButton = document.getElementById('editButton');
+        const editModal = document.getElementById('editModal');
+        const cancelButton = document.getElementById('cancelButton');
+        const profileForm = document.getElementById('profileForm');
+        
+        // Toggle Edit Modal
+        editButton.addEventListener('click', () => {
+            editModal.classList.remove('hidden');
+        });
+        
+        cancelButton.addEventListener('click', () => {
+            editModal.classList.add('hidden');
+        });
+        
+        profileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Save changes and close modal
+            const nameInput = document.getElementById('nameInput').value;
+            const usernameInput = document.getElementById('usernameInput').value;
+            const bioInput = document.getElementById('bioInput').value;
+
+            // Update profile fields
+            document.getElementById('nameField').textContent = nameInput;
+            document.getElementById('usernameField').textContent = usernameInput;
+            document.getElementById('bioField').textContent = bioInput;
+
+            // Hide modal
+            editModal.classList.add('hidden');
+        });
+
+        // Change Profile Picture (Simulated)
+        const changePhotoButton = document.getElementById('changePhotoButton');
+        const fileInput = document.getElementById('fileInput');
+        
+        changePhotoButton.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                document.getElementById('profilePicture').src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+        // Skills Editing Logic
+        const skillsField = document.getElementById('skillsField');
+        const addSkillButton = document.getElementById('addSkillButton');
+
+        // Add new skill
+        addSkillButton.addEventListener('click', () => {
+            const newSkill = prompt('Enter new skill:');
+            if (newSkill) {
+                const skillSpan = document.createElement('span');
+                skillSpan.classList.add('px-4', 'py-2', 'bg-gray-200', 'rounded-lg', 'skill-item');
+                skillSpan.textContent = newSkill;
+                skillsField.appendChild(skillSpan);
+            }
+        });
+
+        // Make profile editable
+        document.getElementById('editButton').addEventListener('click', () => {
+            document.querySelectorAll('.editable').forEach(field => {
+                field.contentEditable = "true";
+            });
+        });
+
+    </script>
+
+</body>
+</html>

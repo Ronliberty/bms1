@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partnership Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .helper-text {
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Partnership Application Form</h2>
+        
+        <form id="partnershipForm">
+            <!-- Company Information -->
+            <label for="companyName">Company Name:</label>
+            <input type="text" id="companyName" name="companyName" placeholder="Enter your company's name" required>
+
+            <label for="contactEmail">Contact Email:</label>
+            <input type="email" id="contactEmail" name="contactEmail" placeholder="Enter your email address" required>
+
+            <label for="partnershipType">Partnership Type:</label>
+            <select id="partnershipType" name="partnershipType" required>
+                <option value="">Select Partnership Type</option>
+                <option value="tech">Tech Partnership</option>
+                <option value="business">Business Partnership</option>
+                <option value="marketing">Marketing Partnership</option>
+                <option value="investment">Investment Partnership</option>
+            </select>
+
+            <!-- Tech Partnership Questions -->
+            <div id="techQuestions" class="hidden">
+                <h3>Tech Partnership Details</h3>
+                
+                <label for="techTools">What technologies/tools does your company specialize in?</label>
+                <textarea id="techTools" name="techTools" rows="4" placeholder="e.g., AI, blockchain, cloud infrastructure" required></textarea>
+
+                <label for="integrationDetails">How do you envision technical integration with our systems?</label>
+                <textarea id="integrationDetails" name="integrationDetails" rows="4" placeholder="Describe any integrations or challenges you foresee" required></textarea>
+
+                <label for="caseStudy">Can you provide a case study or example of a past tech integration?</label>
+                <textarea id="caseStudy" name="caseStudy" rows="4" placeholder="Provide a case study example" required></textarea>
+            </div>
+
+            <!-- Business Partnership Questions -->
+            <div id="businessQuestions" class="hidden">
+                <h3>Business Partnership Details</h3>
+                
+                <label for="targetMarket">What is your target market, and how do you currently reach them?</label>
+                <textarea id="targetMarket" name="targetMarket" rows="4" placeholder="Describe your customer base and marketing channels" required></textarea>
+
+                <label for="mutualBenefits">How do you see this partnership benefiting both companies?</label>
+                <textarea id="mutualBenefits" name="mutualBenefits" rows="4" placeholder="Describe the mutual benefits of this partnership" required></textarea>
+
+                <label for="businessGoals">What are your key business goals over the next 12 months?</label>
+                <textarea id="businessGoals" name="businessGoals" rows="4" placeholder="Outline your business goals" required></textarea>
+            </div>
+
+            <!-- Marketing Partnership Questions -->
+            <div id="marketingQuestions" class="hidden">
+                <h3>Marketing Partnership Details</h3>
+                
+                <label for="marketingChannels">What are the main channels you use for marketing campaigns?</label>
+                <textarea id="marketingChannels" name="marketingChannels" rows="4" placeholder="e.g., Google Ads, Instagram, Facebook" required></textarea>
+
+                <label for="campaignExample">Can you describe a successful marketing campaign you've run in the past?</label>
+                <textarea id="campaignExample" name="campaignExample" rows="4" placeholder="Provide an example of a successful campaign" required></textarea>
+
+                <label for="brandLeverage">How would you leverage our brand to enhance future campaigns?</label>
+                <textarea id="brandLeverage" name="brandLeverage" rows="4" placeholder="Share your vision for integrating our brand into your campaigns" required></textarea>
+            </div>
+
+            <!-- Investment Partnership Questions -->
+            <div id="investmentQuestions" class="hidden">
+                <h3>Investment Partnership Details</h3>
+                
+                <label for="investmentCapital">How much capital are you willing to invest, and what are your expectations?</label>
+                <input type="number" id="investmentCapital" name="investmentCapital" placeholder="e.g., $500,000" required>
+
+                <label for="investmentFocus">What industries do you focus on for investments, and how does our business align with your portfolio?</label>
+                <textarea id="investmentFocus" name="investmentFocus" rows="4" placeholder="Describe your investment sectors" required></textarea>
+
+                <label for="investmentStructure">How would you prefer to structure this investment?</label>
+                <textarea id="investmentStructure" name="investmentStructure" rows="4" placeholder="e.g., equity, revenue-sharing" required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('partnershipType').addEventListener('change', function() {
+            let techSection = document.getElementById('techQuestions');
+            let businessSection = document.getElementById('businessQuestions');
+            let marketingSection = document.getElementById('marketingQuestions');
+            let investmentSection = document.getElementById('investmentQuestions');
+            
+            // Hide all sections by default
+            techSection.classList.add('hidden');
+            businessSection.classList.add('hidden');
+            marketingSection.classList.add('hidden');
+            investmentSection.classList.add('hidden');
+            
+            // Show the relevant section based on the selected partnership type
+            if (this.value === 'tech') {
+                techSection.classList.remove('hidden');
+            } else if (this.value === 'business') {
+                businessSection.classList.remove('hidden');
+            } else if (this.value === 'marketing') {
+                marketingSection.classList.remove('hidden');
+            } else if (this.value === 'investment') {
+                investmentSection.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

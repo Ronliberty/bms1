@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed top-0 left-0 h-full bg-blue-900 text-white w-64 transform -translate-x-full transition-transform duration-200">
+            <div class="p-6">
+            <h1 class="text-2xl font-bold mb-4">BMS Dashboard</h1>
+            <ul>
+                <li class="p-3 hover:bg-blue-700 rounded"><a href="partnership.html" onclick="showContent('partnershipsContent')">Partnerships</a></li>
+                <li class="p-3 hover:bg-blue-700 rounded"><a href="apply.html" onclick="showContent('applyContent')">Apply</a></li>
+                <li class="p-3 hover:bg-blue-700 rounded"><a href="help.html" onclick="showContent('helpContent')">Help</a></li>
+                <li class="p-3 hover:bg-blue-700 rounded"><a href="contact.html" onclick="showContent('contactContent')">Contact</a></li>
+                <li class="p-3 hover:bg-blue-700 rounded"><a href="settings.html" onclick="showContent('settingsContent')">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex flex-col min-h-screen transition-transform duration-200" id="mainContent">
+
+        <!-- Navbar -->
+        <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <button id="toggleSidebar" class="text-blue-900 mr-3">
+                    ☰
+                </button>
+                <h1 class="text-xl font-semibold">BMS</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="notification.html">
+                    <button class="text-blue-900">Notification</button>
+                </a>
+                <a href="inbox.html">
+                    <button class="text-blue-900">Inbox</button>
+                </a>
+                <a href="profile.html">
+                    <button class="text-blue-900">Profile</button>
+                </a>
+                
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 p-6">
+            
+            <!-- Partnerships Content -->
+            <div id="partnershipsContent" class="hidden">
+                <h2 class="text-2xl font-bold mb-4">Partnerships</h2>
+                <p>Welcome to the Partnerships section. Explore our embedded platforms below:</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+                    <!-- Example Platform Card -->
+                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                        <div class="aspect-w-16 aspect-h-9">
+                            <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">Platform 1</h3>
+                            <p class="text-sm text-gray-600">Learn more about our partner platform.</p>
+                            <a href="#" class="text-blue-500 mt-2 block">Partner with us</a>
+                        </div>
+                    </div>
+                    <!-- Add more platform cards as needed -->
+                </div>
+            </div>
+
+            <!-- Apply Content -->
+            <div id="applyContent" class="hidden">
+                <h2 class="text-2xl font-bold mb-4">Apply</h2>
+                <div class="bg-white shadow-md rounded-lg p-6 mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Apply for Opportunities</h3>
+                    <p class="text-gray-600">Join our team by applying for available positions.</p>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded mt-3" onclick="showForm()">Apply Now</button>
+                </div>
+                <div id="applicationForm" class="hidden bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2">Application Form</h3>
+                    <form>
+                        <label class="block mb-2">Name</label>
+                        <input type="text" class="w-full p-2 mb-4 border rounded" placeholder="Your Name">
+                        <label class="block mb-2">Email</label>
+                        <input type="email" class="w-full p-2 mb-4 border rounded" placeholder="Your Email">
+                        <label class="block mb-2">Position</label>
+                        <select class="w-full p-2 mb-4 border rounded">
+                            <option>Select Position</option>
+                            <option>Software Engineer</option>
+                            <option>Project Manager</option>
+                        </select>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Help Content -->
+            <div id="helpContent" class="hidden">
+                <h2 class="text-2xl font-bold mb-4">Help</h2>
+                <p>Explore our resources or reach out for support:</p>
+                <ul class="list-disc ml-6 mt-4 text-gray-600">
+                    <li>FAQ</li>
+                    <li>User Guide</li>
+                    <li>Community Support</li>
+                </ul>
+            </div>
+
+            <!-- Contact Content -->
+            <div id="contactContent" class="hidden">
+                <h2 class="text-2xl font-bold mb-4">Contact</h2>
+                <p>Feel free to reach out with any inquiries:</p>
+                <div class="bg-white shadow-md rounded-lg p-6 mt-4">
+                    <p><strong>Email:</strong> contact@bmsdashboard.com</p>
+                    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                    <p><strong>Address:</strong> 123 Dashboard Lane, City, Country</p>
+                </div>
+            </div>
+
+            <!-- Settings Content -->
+            <div id="settingsContent" class="hidden">
+                <h2 class="text-2xl font-bold mb-4">Settings</h2>
+                <p>Adjust your preferences here:</p>
+                <form class="bg-white shadow-md rounded-lg p-6 mt-4">
+                    <label class="block mb-2">Language</label>
+                    <select class="w-full p-2 mb-4 border rounded">
+                        <option>English</option>
+                        <option>Spanish</option>
+                        <option>French</option>
+                    </select>
+                    <label class="block mb-2">Notifications</label>
+                    <input type="checkbox" class="mb-4" checked> Receive Email Notifications
+                    <br>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save Settings</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Function to show specific content section
+        function showContent(contentId) {
+            // Hide all content sections
+            document.querySelectorAll('main > div').forEach(div => div.classList.add('hidden'));
+
+            // Show the selected content section
+            document.getElementById(contentId).classList.remove('hidden');
+        }
+
+        // Toggle Sidebar
+        document.getElementById("toggleSidebar").onclick = function() {
+            document.getElementById("sidebar").classList.toggle("-translate-x-full");
+            document.getElementById("mainContent").classList.toggle("ml-64");
+        };
+
+        // Show application form on Apply button click
+        function showForm() {
+            document.getElementById('applicationForm').classList.toggle('hidden');
+        }
+    </script>
+
+</body>
+</html>

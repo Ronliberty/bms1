@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - BMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .accordion-content { display: none; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="max-w-4xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-lg">
+        <h1 class="text-3xl font-bold mb-6 text-center">Help & FAQs</h1>
+
+        <!-- FAQ Section -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-semibold">Frequently Asked Questions</h2>
+
+            <div class="space-y-2">
+                <!-- FAQ 1 -->
+                <div class="border border-gray-300 rounded-lg">
+                    <button class="w-full text-left p-4 font-medium hover:bg-gray-100" onclick="toggleFaq('faq1')">What is BMS and what services do you offer?</button>
+                    <div id="faq1" class="accordion-content p-4">
+                        <p>BMS is a comprehensive solution for businesses looking to establish partnerships in various domains, including tech, business, marketing, and investment. We offer a range of services to help our partners grow and succeed.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border border-gray-300 rounded-lg">
+                    <button class="w-full text-left p-4 font-medium hover:bg-gray-100" onclick="toggleFaq('faq2')">How can I apply for a partnership?</button>
+                    <div id="faq2" class="accordion-content p-4">
+                        <p>You can apply for a partnership through our online form on the <a href="apply.html" class="text-blue-500">Apply</a> page. Select the type of partnership you are interested in and provide the required details.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border border-gray-300 rounded-lg">
+                    <button class="w-full text-left p-4 font-medium hover:bg-gray-100" onclick="toggleFaq('faq3')">Who can I contact for more information?</button>
+                    <div id="faq3" class="accordion-content p-4">
+                        <p>If you have any questions, feel free to reach out to us via the <a href="contact.html" class="text-blue-500">Contact</a> page. Our team will be happy to assist you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFaq(faqId) {
+            const content = document.getElementById(faqId);
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
